@@ -1,0 +1,72 @@
+wifi-menu
+pacman -Sy reflector
+
+reflector -c 'Mexico' -f 12 -l 12 -n 12 --verbose --save /etc/pacman.d/mirrorlist
+
+configure disks / PARTITION
+
+pacstrap:
+root@archiso: pacstrap /mnt base base-devel
+
+genfstab:
+root@archiso: genfstab -U /mnt >> /mnt/etc/fstab
+
+chroot:
+arch-chroot /mnt
+
+nano /etc/pacman.conf
+After ARCHITECTURE and #PACMAN WON'T:
+ILoveCandy
+Quitar # de multilib y la sig linea
+[archlinuxfr]
+SigLevel=Never
+Server=http://repo.archlinux.fr/$arch
+
+hostname:
+echo (nombre) > /etc/hostname
+passwd
+
+adduser:
+useradd -n -G wheel -s /bin/bash (usuario)
+passwd (usuario)
+
+sudo:
+EDITOR=nano visudo
+Quitar # de SAME THING WITHOUT A PASSWD
+
+
+sudo pacman -S git
+
+cd /home/user/Desktop
+git clone https://github.com/lalovzg/Installation.git
+cd Installation
+pacman -S - <base.txt
+pacman -S - <kernels.txt
+(etc...watch YT video for a better understanding of how to do this.)
+
+
+grub-install /dev/sda
+grub-mkconfig -o /boot/grub/grub.cfg
+
+reboot
+
+root
+wifi-menu
+
+pacman -S reflector rsync
+
+cd /home/user/Desktop/Installation
+
+pacman -S - <XFCE-PLASMA-OB.txt OR DESKTOP ENVIRONMENT
+pacman -S - <pacman-all.txt
+
+yaourt xf86-input-synaptic
+yaourt pulseaudio
+yaourt gvfs 
+yaourt gst-plugins
+yaourt dockbarx
+yaourt pidgin
+
+modprobe -a vboxdrv
+systemctl enable sddm
+systemctl start sddm

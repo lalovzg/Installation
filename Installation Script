@@ -1,0 +1,61 @@
+wifi-menu
+pacman -Sy reflector
+
+reflector -c 'Mexico' -f 12 -l 12 -n 12 --verbose --save /etc/pacman.d/mirrorlist
+
+configure disks
+
+pacstrap
+
+genfstab
+chroot
+
+nano /etc/pacman.conf
+
+hostname
+
+adduser
+
+sudo
+
+sudo pacman -S git
+
+cd /home/user/Desktop
+git clone https://github.com/shastenm76/Installation.git
+cd Installation
+pacman -S - <base.txt
+pacman -S - <kernels.txt
+(etc...watch YT video for a better understanding of how to do this.)
+
+
+grub-install /dev/sda
+grub-mkconfig -o /boot/grub/grub.cfg
+
+reboot
+
+root
+wifi-menu
+
+pacman -S reflector rsync
+
+cd /home/user/Desktop/Installation
+
+pacman -S - <XFCE-PLASMA-OB.txt
+pacman -S - <pacman-all.txt
+
+yaourt xf86-input-synaptic
+yaourt pulseaudio
+yaourt gvfs 
+yaourt gst-plugins
+yaourt dockbarx
+yaourt pidgin
+
+modprobe -a vboxdrv
+systemctl enable sddm
+systemctl start sddm
+
+
+P.S.  In the video, I installed XFCE Plasman and pacman-all before reboot, and then just simply installed virtualbox-ext-oracle afterwards.  You can do it either way.
+
+
+
